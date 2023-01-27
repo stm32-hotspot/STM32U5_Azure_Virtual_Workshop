@@ -16,12 +16,12 @@
 ******************************************************************************
 #>
 
-$Script_Version = "1.1.0 azure vws 2023"
+$Script_Version = "1.1.1 azure vws 2023"
 $copyright      = "Copyright (c) 2022 STMicroelectronics."
 $about          = "STM32U5 Azure Virtual Workshop 2023 prerequisite check"
 $privacy        = "The script doesn't collect or share any data"
 
-$WS_DATE    = "01/19/23"
+$WS_DATE    = "01/27/23"
 
 $softwares =  @(
     [pscustomobject]@{Name="Python*Core Interpreter";
@@ -158,7 +158,6 @@ function Get-SoftwareInfo($program)
 	    $InstalledSoftware += (Get-ChildItem HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ | Get-ItemProperty) 
     }
 	
-    #($InstalledSoftware | Where-Object {$_.DisplayName -like '*'+$program+'*'}) | Select-Object -Property  DisplayName, DisplayVersion | Sort-Object -Property DisplayName
     return ($InstalledSoftware | Where-Object {$_.DisplayName -like '*'+$program+'*'}) | Select-Object -Property  DisplayName, DisplayVersion
 }
 
@@ -203,7 +202,6 @@ function Get-SoftwareInstaller($software)
     {
         Start-Process -Wait -FilePath  $installer
     }
-    
 
     # Refresh envirement variables
     refresh_envirement_variables
@@ -262,7 +260,6 @@ function AZCLI_Login_Check()
         Write-Host "Configuring JSON File"  -ForegroundColor Yellow
         & python .\scripts\configureJson.py
     }
-
 }
 
 <#######################################################  
@@ -350,7 +347,6 @@ Python_Modules_Install
 # Install Azure CLI Extensions
 AZCLI_Extensions_Install
 
-
 # Clone the repos
 foreach($download in $downloads)
 {
@@ -359,13 +355,14 @@ foreach($download in $downloads)
 
     if (!(Test-Path -Path "$PATH_FIRMWARE"))
     {
-        if (!(Test-Path -Path "$PATH_DOWNLOAD")) {
+        if (!(Test-Path -Path "$PATH_DOWNLOAD")) 
+        {
             Write-Host "Downloading " $download.Name  -ForegroundColor Yellow
             Invoke-WebRequest $download.URL -OutFile $PATH_DOWNLOAD
         }
         
-
-        if (Test-Path -Path "$PATH_DOWNLOAD") {
+        if (Test-Path -Path "$PATH_DOWNLOAD") 
+        {
             Write-Host "Extracting " $download.Name " to " $download.destination -ForegroundColor Yellow
             Expand-Archive "$PATH_DOWNLOAD"  -DestinationPath $download.destination
         }
@@ -375,7 +372,6 @@ foreach($download in $downloads)
             Start-Process $download.SRC_URL
             Exit 1
         }
-
     }
     else 
     {
@@ -387,7 +383,5 @@ foreach($download in $downloads)
 AZCLI_Login_Check
 
 Write-Host "OK : System check successful !"  -ForegroundColor Green
-
-& start "C:\STM32CubeExpansion_Cloud_AZURE_V2.1.0\Projects\B-U585I-IOT02A\Applications\TFM_Azure_IoT"
 
 Exit 0
