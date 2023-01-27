@@ -16,6 +16,7 @@
 # ******************************************************************************
 import json
 import random
+from uuid import getnode as get_mac
 
 CONFIG_PATH     = 'C:\\STM32CubeExpansion_Cloud_AZURE_V2.1.0\\Projects\\B-U585I-IOT02A\\Applications\\TFM_Azure_IoT\\AzureScripts\\Config.json'
 SUB             = 'y'
@@ -38,10 +39,11 @@ def writeCredentialsToFile(credentials, CONFIG_PATH):
         json.dump(credentials, outfile, indent=4)
 
 def main():
+    mac = get_mac()
     credentials = loadCredentials(CONFIG_PATH)
 
     credentials['Entered']['Subscription'] = SUB
-    credentials['Entered']['AppName'] = APP_NAME + '-' + ''.join([str(random.randint(0, 999)).zfill(3) for _ in range(2)])
+    credentials['Entered']['AppName'] = APP_NAME + '-'+ hex(mac)[-5:-1]+ ''.join([str(random.randint(0, 999)).zfill(3) for _ in range(2)])
     credentials['Entered']['SSID'] = SSID
     credentials['Entered']['Password'] = PSWD
     credentials['Entered']['ResourceGroup'] = RESOURCE_GROUP
