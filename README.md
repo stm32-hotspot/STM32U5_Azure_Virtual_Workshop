@@ -11,7 +11,8 @@ If you have any question or need support, please contact our support line. The d
 
 ## 2- Important
 * You need to have administration rights on your PC to be able to install drivers and software and to do the workshop.
-* Please refer to the **updated Prerequisite check** [video](https://www.youtube.com/watch?v=6_KjWD8Nc20)
+* Please refer to the **updated prerequisite check** [video](https://www.youtube.com/watch?v=6_KjWD8Nc20)
+[![Watch the video](./assets/video.jpg)](https://www.youtube.com/watch?v=6_KjWD8Nc20)
 
 ## 3- System requirements
 * Windows machine with admin rights
