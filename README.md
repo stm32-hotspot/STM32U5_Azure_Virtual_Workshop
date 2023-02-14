@@ -10,7 +10,8 @@ This process may take between 15mn to 1 hours to complete depending on your syst
 If you have any question or need support, please contact our support line. The details are provided at the end of this document.
 
 ## 2- Important
-You need to have administration rights on your PC to be able to install drivers and software and to do the workshop.
+* You need to have administration rights on your PC to be able to install drivers and software and to do the workshop.
+* Please refer to the **updated Prerequisite check** [video](https://www.youtube.com/watch?v=6_KjWD8Nc20)
 
 ## 3- System requirements
 * Windows machine with admin rights
@@ -50,7 +51,7 @@ We recommend a fresh Windows install, if that is not possible, try to run Window
 ## 7- Prepare your system
 To ensure that everything runs smoothly, it is recommended that you follow all installation steps prior to the workshop. The procedure can take between 15mn to 1h to complete. 
 
-The instructions on setting up your Windows machine are described in this [video]().
+The instructions on setting up your Windows machine are described in this [video](https://www.youtube.com/watch?v=6_KjWD8Nc20).
 
 ### 7.1- Install Git
 
