@@ -21,7 +21,7 @@ $copyright      = "Copyright (c) 2022 STMicroelectronics."
 $about          = "STM32U5 Azure Virtual Workshop 2023 prerequisite check"
 $privacy        = "The script doesn't collect or share any data"
 
-$WS_DATE    = "02/16/23"
+$WS_DATE    = "02/22/23"
 
 $softwares =  @(
     [pscustomobject]@{Name="Python*Core Interpreter";
